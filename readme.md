@@ -1,4 +1,4 @@
-[![javiertinc@cedula](https://javiertinc.github.io/cedula/images/gh-header.png)](https://github.com/JaviertINC/cedula)
+[![javiertinc@cedula](https://javiertinc.github.io/cedula/images/gh-header-dev.png)](https://github.com/JaviertINC/cedula)
 
 ¿Estás confundido o cansado de estar creando funciones para validar el RUN/RUT, el número de documento o pasaporte?
 
