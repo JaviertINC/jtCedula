@@ -2,7 +2,7 @@
 
 ¿Estás confundido o cansado de estar creando funciones para validar el RUN/RUT, el número de documento o pasaporte?
 
-**jtECedula** es tu respuesta.
+**jtCedula** es tu respuesta.
 
 Aquí te presento una librería simple y ligera que te ayudará a validar el RUN/RUT, el número de documento o pasaporte de una manera rápida y eficiente. Con solo unas pocas líneas de código, podrás asegurarte de que los datos ingresados sean válidos y estén en el formato correcto.
 
