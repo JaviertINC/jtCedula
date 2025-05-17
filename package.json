@@ -1,6 +1,6 @@
 {
     "name": "@javiertinc/cedula",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Una librería con algunas herramientas de validación para la cédula de identidad chilena",
     "author": "@JaviertINC",
     "homepage": "https://github.com/JaviertINC/cedula/wiki",
@@ -18,6 +18,8 @@
         "rut-chileno",
         "rut-chile",
         "rut-validator",
+        "numero-documento",
+        "serie",
         "typescript",
         "javascript",
         "library",

@@ -22,9 +22,11 @@ Te invito a revisar la [**documentación**](https://github.com/JaviertINC/cedula
 ```bash
 npm install @javiertinc/cedula
 ```
+
 ```bash
 yarn add @javiertinc/cedula
 ```
+
 ```bash
 pnpm add @javiertinc/cedula
 ```
@@ -66,9 +68,16 @@ jtCedula.run.unformat('12.345.678-k', true); //Ejemplo de respuesta: '0012345678
 jtCedula.run.generate(2); //Ejemplo de respuesta: ['12.345.678-9', '12.345.678-k']
 // Puedes generar RUN aleatorios válidos dentro de un rango específico
 jtCedula.run.generate(2, {min: 10, max: 19}); //Ejemplo de respuesta: ['10.123.456-7', '15.123.456-k']
+
+// Valida si el número de documento es válido
+jtCedula.documentNumber.validate('123456789'); //Ejemplo de respuesta: true
+jtCedula.documentNumber.validate('123.456.789'); //Ejemplo de respuesta: true
+jtCedula.documentNumber.validate('123.JKL.RRR'); //Ejemplo de respuesta: false
+jtCedula.documentNumber.validate('A123456789'); //Ejemplo de respuesta: true
 ```
 
 ![Roadmap](https://javiertinc.github.io/cedula/images/gh-roadmap.png)
+
 | Función | Estado | Observaciones |
 | ------- | :------: | ------ |
 | Validar RUN/RUT | ✅ |  |
@@ -76,5 +85,5 @@ jtCedula.run.generate(2, {min: 10, max: 19}); //Ejemplo de respuesta: ['10.123.4
 | Formatear RUN/RUT | ✅ |  |
 | Desformatear RUN/RUT | ✅ |  |
 | Generar RUN/RUT aleatorio | ✅ |  |
-| Validar número de documento | ❌ | Estoy en investigando cuáles son las letras soportadas por nuevas cédulas de identidad. |
-| Validar número de pasaporte | ❌ | Estoy en proceso de definir los criterios de validación. |
+| Validar número de documento | ✅ |  |
+| Validar número de pasaporte | ❌ | Estoy investigando los criterios de validación. |
