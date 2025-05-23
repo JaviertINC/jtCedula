@@ -1,10 +1,10 @@
 [![javiertinc@cedula](https://javiertinc.github.io/cedula/images/gh-header-dev.png)](https://github.com/JaviertINC/cedula)
 
-¿Estás confundido o cansado de estar creando funciones para validar el RUN/RUT, el número de documento o pasaporte?
+¿Estás confundido o cansado de estar creando funciones para validar el RUN/RUT, el número de documento, buscando en cientos de ejemplos en Internet?
 
 **jtCedula** es tu respuesta.
 
-Aquí te presento una librería simple y ligera que te ayudará a validar el RUN/RUT, el número de documento o pasaporte de una manera rápida y eficiente. Con solo unas pocas líneas de código, podrás asegurarte de que los datos ingresados sean válidos y estén en el formato correcto.
+Aquí te presento una librería simple y ligera que te ayudará a validar el RUN/RUT, el número de documento o pasaporte de una manera rápida y eficiente. Con solo unas pocas líneas de código, podrás asegurarte de que los datos ingresados sean válidos y estén en el formato correcto. Incluso calcular la edad de una persona con su RUN/RUT.
 
 > [!NOTE]
 > Este proyecto no está afiliado a ninguna entidad gubernamental ni tiene relación con el gobierno de Chile. Es una herramienta independiente creada para facilitar la validación de documentos en aplicaciones web.
@@ -14,7 +14,7 @@ Aquí te presento una librería simple y ligera que te ayudará a validar el RUN
 Te invito a revisar la [**documentación**](https://github.com/JaviertINC/cedula/wiki) para comprobar lo fácil que es usarlo. Aquí encontrarás ejemplos de uso, funciones disponibles y mucho más.
 
 > [!IMPORTANT]
-> Las validaciones en esta librería son cálculos matemáticos y no están relacionadas con la veracidad de los datos. Por lo tanto, no se garantiza que el RUN/RUT, el número de documento o pasaporte sea real o esté asociado a una persona específica. Esta librería solo valida la estructura y formato de los datos ingresados.
+> Las validaciones en esta librería son cálculos matemáticos y no están relacionadas con la veracidad de los datos en el registro civil. Por lo tanto, no se garantiza que el RUN/RUT, el número de documento o pasaporte sea real o esté asociado a una persona específica. Esta librería solo valida que la estructura y formato de los datos ingresados sean correctos.
 
 [![Instalación](https://javiertinc.github.io/cedula/images/gh-instalacion.png)](https://github.com/JaviertINC/cedula/wiki)
 ¡Esto es realmente rápido y sencillo! Solo necesitas un gestor de paquetes como npm, yarn o pnpm. Si ya tienes uno instalado, simplemente ejecuta uno de los siguientes comandos en la raíz de tu proyecto:
@@ -69,6 +69,9 @@ jtCedula.run.generate(2); //Ejemplo de respuesta: ['12.345.678-9', '12.345.678-k
 // Puedes generar RUN aleatorios válidos dentro de un rango específico
 jtCedula.run.generate(2, {min: 10, max: 19}); //Ejemplo de respuesta: ['10.123.456-7', '15.123.456-k']
 
+// Calcula la edad a partir del RUN/RUT
+jtCedula.run.getAge('12345678-9'); //Ejemplo de respuesta: { age: 26, year: 1998, month: 5 }
+
 // Valida si el número de documento es válido
 jtCedula.documentNumber.validate('123456789'); //Ejemplo de respuesta: true
 jtCedula.documentNumber.validate('123.456.789'); //Ejemplo de respuesta: true
@@ -78,12 +81,13 @@ jtCedula.documentNumber.validate('A123456789'); //Ejemplo de respuesta: true
 
 ![Roadmap](https://javiertinc.github.io/cedula/images/gh-roadmap.png)
 
-| Función | Estado | Observaciones |
-| ------- | :------: | ------ |
-| Validar RUN/RUT | ✅ |  |
-| Obtener dígito verificador | ✅ |  |
-| Formatear RUN/RUT | ✅ |  |
-| Desformatear RUN/RUT | ✅ |  |
-| Generar RUN/RUT aleatorio | ✅ |  |
-| Validar número de documento | ✅ |  |
-| Validar número de pasaporte | ❌ | Estoy investigando los criterios de validación. |
+| Función | Estado |
+| ------- | :------: |
+| Validar RUN/RUT | ✅ |
+| Obtener dígito verificador | ✅ |
+| Formatear RUN/RUT | ✅ |
+| Desformatear RUN/RUT | ✅ |
+| Generar RUN/RUT aleatorio | ✅ |
+| Calcula la edad a partir del RUN/RUT | ✅ |
+| Validar número de documento | ✅ |
+| Validar número de pasaporte | ❌ |

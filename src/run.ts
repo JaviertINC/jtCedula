@@ -57,6 +57,50 @@ const run = {
             results.push(this.format(run));
         }
         return results;
+    },
+
+    getAge(run: string): {age: number, year: number, month: number} {
+        /*
+            Basado en el cálculo de edad por RUT de Fabian Villena
+
+            https://github.com/fvillena/rut-a-edad
+            https://villena.cl/blog/obtener-la-edad-de-un-individuo-desde-su-rut
+            https://fabian.villena.cl/rut-a-edad-fecha-de-nacimiento.html
+  
+        */
+        // Se limpia el RUN y se le quita el dígito verificador
+        let cleanRun = Number(this.unformat(run).slice(0, -1));
+
+        // Pendiente de la curva 
+        let slope = 3.3363697569700348e-06;
+
+        // Intercepto de la curva
+        let intercept = 1932.2573852507373;
+
+        // Se obtiene el año de nacimiento
+        let year = Math.floor(cleanRun * slope + intercept);
+
+        // Se obtiene el mes de nacimiento
+        let month = Math.ceil((cleanRun * slope + intercept - year) * 12);
+        // Se corrige el mes si es 0
+        if (month === 0) {
+            month = 12;
+            year--;
+        }
+
+        // !!! No hay suficente exactitud para obtener el día de nacimiento
+        // let day = Math.floor((cleanRun * slope + intercept - year - (month - 1) / 12) * 365.25);
+
+        // Se obtiene la edad
+        let today = new Date();
+        let todayYear = today.getFullYear();
+        let todayMonth = today.getMonth() + 1; // Los meses empiezan desde 0
+        let age = todayYear - year;
+        if (todayMonth < month || (todayMonth === month)) {
+            age--;
+        }
+
+        return { age, year, month };
     }
 }
 
