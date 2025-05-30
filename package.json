@@ -1,6 +1,6 @@
 {
     "name": "@javiertinc/cedula",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Una librería con algunas herramientas de validación para la cédula de identidad chilena",
     "author": "@JaviertINC",
     "homepage": "https://github.com/JaviertINC/cedula/wiki",

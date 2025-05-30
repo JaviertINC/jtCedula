@@ -1,8 +1,18 @@
 const documentNumber = {
+    /**
+     * Desformatea el número de documento. 
+     * @param serial - Número de documento a desformatear. Puntos son opcionales.
+     * @returns - El número de documento desformateado, en mayúsculas y sin puntos.
+     **/
     unformat(serial: string): string {
         return serial.replace(/\./g, '').replace(/-/g, '').toUpperCase();
     },
 
+    /**
+     * Formatea el número de documento. 
+     * @param serial - Número de documento a formatear. Debe incluir el dígito verificador.
+     * @returns - El número de documento formateado, con puntos y en mayúsculas.
+     **/
     format(serial: string): string {
         serial = this.unformat(serial);
         if (serial.length === 10) {
@@ -14,6 +24,11 @@ const documentNumber = {
         }
     },
 
+    /**
+     * Valida el número de documento. 
+     * @param serial - Número de documento a validar. Puede incluir puntos y guiones.
+     * @returns - true si es válido, false si no.
+     **/
     validate(serial: string): boolean {
         serial = this.unformat(serial);
         if (serial.length === 10) {
@@ -25,6 +40,14 @@ const documentNumber = {
         }
     },
 
+    /**
+     * Genera un número de documento aleatorio. 
+     * @param quantity - Cantidad de números a generar. Por defecto es 1.
+     * @param options - Opciones para la generación:
+     *   - onlyOld: Genera solo números antiguos (A o B + 9 dígitos).
+     *   - onlyNew: Genera solo números nuevos (3 caracteres alfanuméricos + 6 dígitos).
+     * @returns - Un array con los números de documento generados.
+     **/
     generate(quantity: number = 1, options: { onlyOld?: boolean, onlyNew?: boolean } = { onlyOld: false, onlyNew: false }): string[] {
         let results: string[] = [];
         for (let i = 0; i < quantity; i++) {

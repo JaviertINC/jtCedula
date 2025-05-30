@@ -1,10 +1,20 @@
 const run = {
+    /**
+     * Valida el RUN/RUT
+     * @param run - RUN/RUT a validar. Puntos y guiones opcionales pero requiere el dígito verificador.
+     * @returns - true si es válido, false si no
+     **/
     validate(run: string): boolean {
         run = this.unformat(run);
         if (run.length < 2) return false;
         return this.dv(run.slice(0, run.length - 1)) === run.slice(-1).toLowerCase();
     },
 
+    /**
+     * Calcula el dígito verificador del RUN/RUT
+     * @param runBody - RUN/RUT sin el dígito verificador
+     * @returns - El dígito verificador correspondiente
+     **/
     dv(runBody: string): string {
         let runDigits = runBody.replace(/\./g, '').split('').reverse();
         let sum = 0;
@@ -27,6 +37,12 @@ const run = {
         }
     },
 
+    /**
+     * Formatea el RUN/RUT
+     * @param run - RUN/RUT a formatear. Debe incluir el dígito verificador.
+     * @param zero - Si es true, agrega ceros a la izquierda hasta completar 10 dígitos
+     * @returns - El RUN/RUT formateado
+     **/
     format(run: string, zero: boolean = false): string {
         run = this.unformat(run);
         let runBody = run.slice(0, run.length - 1);
@@ -41,10 +57,22 @@ const run = {
         return (formattedrun + '-' + runDv).toLowerCase();
     },
 
+    /**
+     * Desformatea el RUN/RUT
+     * @param run - RUN/RUT a desformatear. Puede incluir puntos y guiones.
+     * @param zero - Si es true, agrega ceros a la izquierda hasta completar 11 dígitos
+     * @returns - El RUN/RUT desformateado
+     **/
     unformat(run: string, zero: boolean = false): string {
         return (zero ? run.replace(/\./g, '').replace(/-/g, '').padStart(11, '0') : run.replace(/\./g, '').replace(/-/g, '')).toLowerCase();
     },
 
+    /**
+     * Genera un RUN/RUT aleatorio
+     * @param quantity - Cantidad de RUN/RUT a generar
+     * @param range - Rango de números a generar (por defecto 1-27)
+     * @returns - Un array con los RUN/RUT generados
+     **/
     generate(quantity: number = 1, range: {min: number, max: number} = {min: 1, max: 27}): string[] {
         let results: string[] = [];
         for (let i = 0; i < quantity; i++) {
@@ -59,6 +87,12 @@ const run = {
         return results;
     },
 
+    /**
+     * Calcula la edad a partir del RUN/RUT.
+     * Revisa la documentación para más detalles.
+     * @param run - RUN/RUT a analizar
+     * @returns - Un objeto con la edad, año y mes de nacimiento
+     **/
     getAge(run: string): {age: number, year: number, month: number} {
         /*
             Basado en el cálculo de edad por RUT de Fabian Villena
