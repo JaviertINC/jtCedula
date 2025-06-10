@@ -34,7 +34,7 @@ const documentNumber = {
         if (serial.length === 10) {
             return /^[AB]{1}[0-9]{9}$/.test(serial);
         } else if (serial.length === 9) {
-            return /^[0-9ABCDEF]{3}[0-9]{6}$/.test(serial);
+            return /^[0-9A-Z]{3}[0-9]{6}$/.test(serial);
         } else {
             return false;
         }
